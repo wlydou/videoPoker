@@ -1,0 +1,16 @@
+{% extends "app_layout.html" %}
+{% block content %}
+    <h4>Résultats: </h4>
+    <h5>Votre main finale:</h5>
+    <div class="row">
+        {% for carte in main %}
+            <div class="col">
+                <img class="img-fluid card" alt="carte" src="{{ url_for('static', filename='cartes/'+carte+'.jpg') }}"/>
+            </div>
+        {% endfor %}
+    </div>
+    <br/>
+    <h5>{{ message }}</h5>
+    <h5>Avec votre mise de {{ mise }}€, vous avez maintenant {{ bankroll }}€!</h5>
+    <a class="btn btn-primary" href="/">Recommencer</a>
+{% endblock content %}

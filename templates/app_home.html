@@ -1,0 +1,28 @@
+{% extends "app_layout.html" %}
+{% block content %}
+    <form method="POST" action="/premier-tirage">
+      {% if bankroll %}
+          <h3>Suite de partie</h3>
+      {% else %}
+          <h3>Nouvelle Partie</h3>
+      {% endif %}
+      <div class="form-group row">
+        <br/>
+        <label for="bankroll" class="col-sm-2 col-form-label">Bankroll :</label>
+        <div class="col-sm-10">
+          {% if bankroll %}
+            <input type="Number" class="form-control" id="bankroll" name="bankroll" value="{{ bankroll }}" placeholder="Insérez de l'argent" disabled>
+          {% else %}
+            <input type="Number" class="form-control" id="bankroll" name="bankroll" placeholder="Insérez de l'argent">
+          {% endif %}
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="mise" class="col-sm-2 col-form-label">Mise :</label>
+        <div class="col-sm-10">
+          <input type="Number" class="form-control" id="mise" name="mise" placeholder="Combien miser?">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+{% endblock content %}

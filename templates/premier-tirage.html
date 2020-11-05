@@ -1,0 +1,29 @@
+{% extends "app_layout.html" %}
+{% block content %}
+    <h3>Voici votre main, vous pouvez jeter des cartes :</h3>
+    <br/>
+    <form method="POST" action="/deuxieme-tirage">
+    <div class="row">
+    {% for carte in main %}
+        <div class="col">
+            <img class="img-fluid card" alt="carte" src="{{ url_for('static', filename='cartes/'+carte+'.jpg') }}"/>
+
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="{{ carte }}" id="{{ carte }}" value="option1" checked>
+              <label class="form-check-label" for="{{ carte }}">
+                Garder
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="{{ carte }}" id="{{ carte }}2" value="option2">
+              <label class="form-check-label" for="{{ carte }}2">
+                Jeter
+              </label>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+        <br/>
+        <button type="submit" class="btn btn-primary">Passer au deuxième tirage ></button>
+    </form>
+{% endblock content %}
